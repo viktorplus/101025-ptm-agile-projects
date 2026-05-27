@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third-party libraries
+    'rest_framework',
 
     # local apps
     'projects.apps.ProjectsConfig',
@@ -38,6 +39,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+AUTH_USER_MODEL = 'projects.User'
 
 TEMPLATES = [
     {
