@@ -27,3 +27,17 @@ class CreateProjectSerializer(serializers.ModelSerializer):
            )
 
        return value
+
+"""Создайте новый сериализатор ProjectDetailSerializer для получения конкретной информации по проекту:
+name
+description
+created_at
+count_of_files"""
+class ProjectDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Project
+        fields = ['id', 'name', 'description', 'created_at', 'count_of_files']
+
+    # fields = '__all__'
+    # exclude = ['files']

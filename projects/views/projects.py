@@ -1,15 +1,14 @@
 from datetime import datetime
 
 from django.utils import timezone
-from rest_framework.decorators import api_view
-from rest_framework.exceptions import NotFound
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
 
 from projects.models import Project
-from projects.serializers import ProjectListSerializer, CreateProjectSerializer
+from projects.serializers import ProjectListSerializer, CreateProjectSerializer, ProjectDetailSerializer
 
 
 class ProjectsListAPIView(APIView):
@@ -70,3 +69,13 @@ class ProjectsListAPIView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+"""Напишите новый класс-отображение ProjectDetailAPIView для получения конкретного проекта, 
+обновления и удаления проекта.
+При обновлении полученного проекта добавьте возможность частичного обновления полей.
+Зарегистрируйте новый эндпоинт, проверьте как отрабатывают запросы GET, PUT, DELETE.
+Зафиксируйте все изменения, сделайте запрос на слияние."""
+class ProjectDetailAPIView(RetrieveUpdateDestroyAPIView):
+
+    queryset = Project.objects.all()
+    serializer_class = ProjectDetailSerializer
