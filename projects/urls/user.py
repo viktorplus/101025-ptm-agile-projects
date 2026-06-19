@@ -1,9 +1,14 @@
-from rest_framework.routers import DefaultRouter
-from projects.views.user import UserViewSet
+# from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-router = DefaultRouter()
-router.register('', UserViewSet, basename='users')
+from projects.views.user import UserViewSet, UserListGenericView
 
-urlpatterns = []
+# router = DefaultRouter()
+# router.register('', UserViewSet, basename='users')
 
-urlpatterns += router.urls
+# Зарегистрируйте новый эндпоинт, протестируйте его, чтобы убедиться, что он работает.
+urlpatterns = [
+    path("users/", UserListGenericView.as_view())
+]
+
+# urlpatterns += router.urls
